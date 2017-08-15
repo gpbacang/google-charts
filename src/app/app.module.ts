@@ -3,9 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
+import { GoogleChart } from 'angular2-google-chart/directives/angular2-google-chart.directive';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    GoogleChart
   ],
   imports: [
     BrowserModule
