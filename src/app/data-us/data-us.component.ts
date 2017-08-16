@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-initial-chart',
-  templateUrl: './initial-chart.component.html',
-  styleUrls: ['./initial-chart.component.scss']
+  selector: 'app-data-us',
+  templateUrl: './data-us.component.html',
+  styleUrls: ['./data-us.component.scss']
 })
-export class InitialChartComponent implements OnInit {
+export class DataUsComponent implements OnInit {
+
   public column_ChartData = [
       // ['City', '2010 Population', '2000 Population'],
       // ['New York City, NY', 8175000, 8008000],
@@ -13,20 +14,19 @@ export class InitialChartComponent implements OnInit {
       // ['Chicago, IL', 2695000, 2896000],
       // ['Houston, TX', 2099000, 1953000],
       // ['Philadelphia, PA', 1526000, 1517000]];
-      ['Project', 'Data US', 'Data UK', 'Gmail US', 'Gmail World', 'Building Owners', 'Condo Owners', 'Applicants', 'Filling Reps'],
-      ['2017-04-15', 8175000, 8008000, 8175000, 8008000, 8175000, 8008000, 8175000, 8008000],
-      ['2017-04-16', 8175000, 8008000, 8175000, 8008000, 8175000, 8008000, 8175000, 8008000],
-      ['2017-04-17', 8175000, 8008000, 8175000, 8008000, 8175000, 8008000, 8175000, 8008000],
-      ['2017-04-18', 8175000, 8008000, 8175000, 8008000, 8175000, 8008000, 8175000, 8008000],
-      ['2017-04-19', 8175000, 8008000, 8175000, 8008000, 8175000, 8008000, 8175000, 8008000]
+      ['Project', 'Data US'],
+      ['2017-04-15', 8175000],
+      ['2017-04-16', 8175000],
+      ['2017-04-17', 8175000],
+      ['2017-04-18', 8175000],
+      ['2017-04-19', 8175000],
+      ['2017-04-20', 8175000]
     ];
 
       public column_ChartOptions = {
           title: 'Initial',
           chartArea: { width: '50%' },
           hAxis: {
-              // title: 'Total Population',
-
               format: 'M/d/yy',
               gridlines: {count: 15},
               textStyle: {
@@ -41,9 +41,7 @@ export class InitialChartComponent implements OnInit {
               }
           },
           vAxis: {
-              // title: 'Date',
               minValue: 0,
-              // format: 'M/d/yy',
               gridlines: {count: 15},
               textStyle: {
                   fontSize: 14,
