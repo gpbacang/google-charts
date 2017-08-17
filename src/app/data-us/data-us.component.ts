@@ -34,7 +34,7 @@ export class DataUS {
 export class DataUsComponent {
   dataUs: DataUS[] = [];
   projectId: number = 1;
-  url: string = "http://localhost:8000/massprojectreport/1/";
+  url: string = "http://192.168.2.8:8000/massprojectreport/1/";
 
   // public column_ChartData = [
   //     ['Project', 'Data US'],
