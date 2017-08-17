@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 
 import { GoogleChart } from 'angular2-google-chart/directives/angular2-google-chart.directive';
 import { DataUsComponent } from './data-us/data-us.component';
-import { HeaderComponent } from './header/header.component';
 import { DataUkComponent } from './data-uk/data-uk.component';
 import { GmailUsComponent } from './gmail-us/gmail-us.component';
 import { GmailWorldComponent } from './gmail-world/gmail-world.component';
@@ -23,7 +22,6 @@ import { AppService } from './app.service';
     AppComponent,
     GoogleChart,
     DataUsComponent,
-    HeaderComponent,
     DataUkComponent,
     GmailUsComponent,
     GmailWorldComponent,
