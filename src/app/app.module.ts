@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -13,6 +14,9 @@ import { BuildingOwnersComponent } from './building-owners/building-owners.compo
 import { CondoOwnersComponent } from './condo-owners/condo-owners.component';
 import { ApplicantsComponent } from './applicants/applicants.component';
 import { FilingRepsComponent } from './filing-reps/filing-reps.component';
+
+import { DataUsService } from './data-us/data-us.service';
+
 
 @NgModule({
   declarations: [
@@ -29,9 +33,11 @@ import { FilingRepsComponent } from './filing-reps/filing-reps.component';
     FilingRepsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule
   ],
-  providers: [],
+  exports: [],
+  providers: [DataUsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
