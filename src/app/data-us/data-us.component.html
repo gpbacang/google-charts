@@ -1,4 +1,9 @@
-<!-- <div id="column_chart" [chartData]="column_ChartData" [chartOptions] = "column_ChartOptions" chartType="ColumnChart" GoogleChart></div> -->
-<div style="text-align:center">
+<div id="initial" [chartData]="initial_ChartData" [chartOptions] = "column_ChartOptions1" chartType="ColumnChart" GoogleChart></div>
+<div id="subscribed" [chartData]="subscribed_ChartData" [chartOptions] = "column_ChartOptions2" chartType="ColumnChart" GoogleChart></div>
+<div id="bounced" [chartData]="bounced_ChartData" [chartOptions] = "column_ChartOptions3" chartType="ColumnChart" GoogleChart></div>
+<div id="freq" [chartData]="freq_ChartData" [chartOptions] = "column_ChartOptions4" chartType="LineChart" GoogleChart></div>
+<div id="sent" [chartData]="sent_ChartData" [chartOptions] = "column_ChartOptions5" chartType="LineChart" GoogleChart></div>
+
+<!-- <div style="text-align:center">
     <button (click)="getData()">Get /products </button>
-</div>
+</div> -->
