@@ -1,9 +1,12 @@
-<h4>Filing Reps</h4>
-<div id="bounced" [chartData]="bounced_ChartData" [chartOptions] = "line_ChartOptions" chartType="LineChart" GoogleChart></div>
-<div id="freq" [chartData]="freq_ChartData" [chartOptions] = "column_ChartOptions" chartType="LineChart" GoogleChart></div>
-<div id="sent-today" [chartData]="sentToday_ChartData" [chartOptions] = "column_ChartOptions" chartType="ColumnChart" GoogleChart></div>
-<div id="sent-week" [chartData]="sentWeek_ChartData" [chartOptions] = "column_ChartOptions" chartType="ColumnChart" GoogleChart></div>
-<div class="group-charts">
-  <div id="sent-month" [chartData]="sentMonth_ChartData" [chartOptions] = "pie_chartOptions1" chartType="PieChart" GoogleChart></div>
-  <div id="subscribed" [chartData]="subscribed_ChartData" [chartOptions] = "pie_chartOptions" chartType="PieChart" GoogleChart></div>
+<div *ngIf="filingRepsLength != 0">
+  <h4>Filing Reps</h4>
+  <div id="bounced" [chartData]="bounced_ChartData" [chartOptions] = "line_ChartOptions" chartType="LineChart" GoogleChart></div>
+  <div id="freq" [chartData]="freq_ChartData" [chartOptions] = "column_ChartOptions" chartType="LineChart" GoogleChart></div>
+  <div id="sent-today" [chartData]="sentToday_ChartData" [chartOptions] = "column_ChartOptions" chartType="ColumnChart" GoogleChart></div>
+  <div id="sent-week" [chartData]="sentWeek_ChartData" [chartOptions] = "column_ChartOptions" chartType="ColumnChart" GoogleChart></div>
+  <div class="group-charts">
+    <div id="sent-month" [chartData]="sentMonth_ChartData" [chartOptions] = "pie_chartOptions1" chartType="PieChart" GoogleChart></div>
+    <div id="subscribed" [chartData]="subscribed_ChartData" [chartOptions] = "pie_chartOptions" chartType="PieChart" GoogleChart></div>
+  </div>
+  <hr>
 </div>

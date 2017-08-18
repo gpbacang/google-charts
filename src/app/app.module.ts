@@ -14,6 +14,8 @@ import { CondoOwnersComponent } from './condo-owners/condo-owners.component';
 import { ApplicantsComponent } from './applicants/applicants.component';
 import { FilingRepsComponent } from './filing-reps/filing-reps.component';
 
+import { DataService } from './shared/data.service';
+
 
 
 @NgModule({
@@ -34,7 +36,7 @@ import { FilingRepsComponent } from './filing-reps/filing-reps.component';
     HttpModule
   ],
   exports: [],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
