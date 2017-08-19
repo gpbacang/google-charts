@@ -10,7 +10,7 @@ import * as moment from 'moment';
   templateUrl: './data-uk.component.html',
   styleUrls: ['./data-uk.component.scss']
 })
-export class DataUkComponent implements OnInit {
+export class DataUkComponent {
   @Input() dataUk: Data[] = [];
   initial_ChartData: any[] = [];
   subscribed_ChartData: any[] = [];
