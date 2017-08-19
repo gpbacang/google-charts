@@ -6,4 +6,16 @@
 <app-condo-owners *ngIf="condoOwners != 0" [condoOwners]="condoOwners"></app-condo-owners>
 <app-applicants *ngIf="applicantsLength != 0" [applicants]="applicants"></app-applicants>
 <app-filing-reps *ngIf="filingRepsLength != 0" [filingReps]="filingReps"></app-filing-reps>
-<app-all-projects></app-all-projects>
+<app-all-projects
+  [dataUs]="dataUs"
+  [dataUk]="dataUk"
+  [gmailUs]="gmailUs"
+  [gmailWorld]="gmailWorld"
+  [buildingOwners]="buildingOwners"
+  [condoOwners]="condoOwners"
+  [applicants]="applicants"
+  [filingReps]="filingReps"
+  ></app-all-projects>
+  <!-- <app-all-projects
+    [applicants]="applicants"
+    ></app-all-projects> -->
