@@ -1,8 +1,9 @@
-<app-data-us></app-data-us>
-<app-data-uk></app-data-uk>
-<app-gmail-us></app-gmail-us>
-<app-gmail-world></app-gmail-world>
-<app-building-owners></app-building-owners>
-<app-condo-owners></app-condo-owners>
-<app-applicants></app-applicants>
-<app-filing-reps></app-filing-reps>
+<app-data-us *ngIf="dataUsLength != 0" [dataUs]="dataUs"></app-data-us>
+<app-data-uk *ngIf="dataUkLength != 0" [dataUk]="dataUk"></app-data-uk>
+<app-gmail-us *ngIf="gmailUsLength != 0" [gmailUs]="gmailUs"></app-gmail-us>
+<app-gmail-world *ngIf="gmailWorldLength != 0" [gmailWorld]="gmailWorld"></app-gmail-world>
+<app-building-owners *ngIf="buildingOwnersLength != 0" [buildingOwners]="buildingOwners"></app-building-owners>
+<app-condo-owners *ngIf="condoOwners != 0" [condoOwners]="condoOwners"></app-condo-owners>
+<app-applicants *ngIf="applicantsLength != 0" [applicants]="applicants"></app-applicants>
+<app-filing-reps *ngIf="filingRepsLength != 0" [filingReps]="filingReps"></app-filing-reps>
+<app-all-projects></app-all-projects>

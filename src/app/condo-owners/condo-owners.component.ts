@@ -1,8 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
-import { Subscription } from 'rxjs/Subscription';
-import { Http, Response } from '@angular/http';
-import 'rxjs/add/operator/toPromise';
+import { Component, Input } from '@angular/core';
 
 import { Data } from '../shared/data';
 import { AppComponent } from '../app.component';
@@ -14,11 +10,8 @@ import * as moment from 'moment';
   templateUrl: './condo-owners.component.html',
   styleUrls: ['./condo-owners.component.scss']
 })
-export class CondoOwnersComponent implements OnInit {
-  condoOwers: Data[] = [];
-  condoOwnersLength: number;
-  projectId: string = "1";
-  url: string = "http://localhost:8000/massprojectreport/6/";
+export class CondoOwnersComponent {
+  @Input() condoOwners: Data[] = [];
   initial_ChartData: any[] = [];
   subscribed_ChartData: any[] = [];
   bounced_ChartData: any[] = [];
@@ -26,7 +19,6 @@ export class CondoOwnersComponent implements OnInit {
   sentToday_ChartData: any[] = [];
   sentWeek_ChartData: any[] = [];
   sentMonth_ChartData: any[] = [];
-  latest_date: any;
 
   line_ChartOptions = {
     chartArea: { width: '70%' },
@@ -132,6 +124,7 @@ export class CondoOwnersComponent implements OnInit {
 
   pie_chartOptions = {
     title: "Current",
+    pieHole: 0.4,
     height: 400
   }
 
@@ -140,54 +133,43 @@ export class CondoOwnersComponent implements OnInit {
     height: 400
   }
 
-
-
   constructor(
-    private http : Http,
     private appComponent: AppComponent
   ) { }
 
-  ngOnInit() {
-    this.getData();
 
-  }
-
-  getData(){
-
-    this.http.get(this.url).toPromise().then((res)=>{
-    this.condoOwers = res.json();
+  ngOnChanges(changes: any) {
     this.subscribedChartData();
     this.bouncedChartData();
     this.freqChartData();
     this.sentTodayChartData();
     this.sentWeekChartData();
     this.sentMonthChartData();
-    this.condoOwnersLength = this.condoOwers.length;
-    });
   }
 
+
   bouncedChartData() {
-    this.bounced_ChartData = this.appComponent.bouncedChartData(this.condoOwers);
+    this.bounced_ChartData = this.appComponent.bouncedChartData(this.condoOwners);
   }
 
   freqChartData() {
-    this.freq_ChartData = this.appComponent.freqChartData(this.condoOwers);
+    this.freq_ChartData = this.appComponent.freqChartData(this.condoOwners);
   }
 
   sentTodayChartData() {
-    this.sentToday_ChartData = this.appComponent.sentTodayChartData(this.condoOwers);
+    this.sentToday_ChartData = this.appComponent.sentTodayChartData(this.condoOwners);
   }
 
   sentWeekChartData() {
-    this.sentWeek_ChartData = this.appComponent.sentWeekChartData(this.condoOwers);
+    this.sentWeek_ChartData = this.appComponent.sentWeekChartData(this.condoOwners);
   }
 
   sentMonthChartData() {
-    this.sentMonth_ChartData = this.appComponent.sentMonthChartData(this.condoOwers);
+    this.sentMonth_ChartData = this.appComponent.sentMonthChartData(this.condoOwners);
   }
 
   subscribedChartData() {
-    this.subscribed_ChartData = this.appComponent.subscribedChartData(this.condoOwers);
+    this.subscribed_ChartData = this.appComponent.subscribedChartData(this.condoOwners);
   }
 
 }

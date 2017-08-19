@@ -1,8 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
-import { Subscription } from 'rxjs/Subscription';
-import { Http, Response } from '@angular/http';
-import 'rxjs/add/operator/toPromise';
+import { Component, Input } from '@angular/core';
 
 import { Data } from '../shared/data';
 import { AppComponent } from '../app.component';
@@ -14,12 +10,9 @@ import * as moment from 'moment';
   templateUrl: './gmail-us.component.html',
   styleUrls: ['./gmail-us.component.scss']
 })
-export class GmailUsComponent implements OnInit {
+export class GmailUsComponent {
 
-  gmailUs: Data[] = [];
-  gmailUsLength: number;
-  projectId: string = "1";
-  url: string = "http://localhost:8000/massprojectreport/3/";
+  @Input() gmailUs: Data[] = [];
   initial_ChartData: any[] = [];
   subscribed_ChartData: any[] = [];
   bounced_ChartData: any[] = [];
@@ -27,7 +20,6 @@ export class GmailUsComponent implements OnInit {
   sentToday_ChartData: any[] = [];
   sentWeek_ChartData: any[] = [];
   sentMonth_ChartData: any[] = [];
-  latest_date: any;
 
   line_ChartOptions = {
     chartArea: { width: '70%' },
@@ -133,6 +125,7 @@ export class GmailUsComponent implements OnInit {
 
   pie_chartOptions = {
     title: "Current",
+    pieHole: 0.4,
     height: 400
   }
 
@@ -144,26 +137,16 @@ export class GmailUsComponent implements OnInit {
 
 
   constructor(
-    private http : Http,
     private appComponent: AppComponent
   ) { }
 
-  ngOnInit() {
-    this.getData();
-  }
-
-  getData(){
-    this.http.get(this.url).toPromise().then((res)=>{
-    this.gmailUs = res.json();
+  ngOnChanges() {
     this.subscribedChartData();
     this.bouncedChartData();
     this.freqChartData();
     this.sentTodayChartData();
     this.sentWeekChartData();
     this.sentMonthChartData();
-    this.gmailUsLength = this.gmailUs.length;
-    });
-
   }
 
   bouncedChartData() {

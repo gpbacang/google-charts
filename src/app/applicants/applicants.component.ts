@@ -1,8 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
-import { Subscription } from 'rxjs/Subscription';
-import { Http, Response } from '@angular/http';
-import 'rxjs/add/operator/toPromise';
+import { Component, Input } from '@angular/core';
 
 import { Data } from '../shared/data';
 import { AppComponent } from '../app.component';
@@ -14,11 +10,8 @@ import * as moment from 'moment';
   templateUrl: './applicants.component.html',
   styleUrls: ['./applicants.component.scss']
 })
-export class ApplicantsComponent implements OnInit {
-  applicants: Data[] = [];
-  applicantsLength: number;
-  projectId: string = "1";
-  url: string = "http://localhost:8000/massprojectreport/7/";
+export class ApplicantsComponent {
+  @Input() applicants: Data[] = [];
   initial_ChartData: any[] = [];
   subscribed_ChartData: any[] = [];
   bounced_ChartData: any[] = [];
@@ -26,7 +19,6 @@ export class ApplicantsComponent implements OnInit {
   sentToday_ChartData: any[] = [];
   sentWeek_ChartData: any[] = [];
   sentMonth_ChartData: any[] = [];
-  latest_date: any;
 
   line_ChartOptions = {
     chartArea: { width: '70%' },
@@ -132,6 +124,7 @@ export class ApplicantsComponent implements OnInit {
 
   pie_chartOptions = {
     title: "Current",
+    pieHole: 0.4,
     height: 400
   }
 
@@ -140,29 +133,17 @@ export class ApplicantsComponent implements OnInit {
     height: 400
   }
 
-
-
   constructor(
-    private http : Http,
     private appComponent: AppComponent
   ) { }
 
-  ngOnInit() {
-    this.getData();
-  }
-
-  getData(){
-
-    this.http.get(this.url).toPromise().then((res)=>{
-    this.applicants = res.json();
-    this.subscribedChartData();
-    this.bouncedChartData();
-    this.freqChartData();
-    this.sentTodayChartData();
-    this.sentWeekChartData();
-    this.sentMonthChartData();
-    this.applicantsLength = this.applicants.length;
-    });
+  ngOnChanges(changes: any) {
+      this.subscribedChartData();
+      this.bouncedChartData();
+      this.freqChartData();
+      this.sentTodayChartData();
+      this.sentWeekChartData();
+      this.sentMonthChartData();
   }
 
   bouncedChartData() {

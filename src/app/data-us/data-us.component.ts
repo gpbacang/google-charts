@@ -1,11 +1,6 @@
-import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
-import { Subscription } from 'rxjs/Subscription';
-import { Http, Response } from '@angular/http';
-import 'rxjs/add/operator/toPromise';
+import { Component, Input } from '@angular/core';
 
 import { Data } from '../shared/data';
-import { DataService } from '../shared/data.service';
 import { AppComponent } from '../app.component';
 
 import * as moment from 'moment';
@@ -15,12 +10,8 @@ import * as moment from 'moment';
   templateUrl: './data-us.component.html',
   styleUrls: ['./data-us.component.scss']
 })
-export class DataUsComponent implements OnInit {
-  dataUs: Data[] = [];
-  dataUsLength: number;
-  projectId: string = "1";
-  page: string = "data-us"
-  url: string = "http://localhost:8000/massprojectreport/1/";
+export class DataUsComponent {
+  @Input() dataUs: Data[] = [];
   initial_ChartData: any[] = [];
   subscribed_ChartData: any[] = [];
   bounced_ChartData: any[] = [];
@@ -28,8 +19,7 @@ export class DataUsComponent implements OnInit {
   sentToday_ChartData: any[] = [];
   sentWeek_ChartData: any[] = [];
   sentMonth_ChartData: any[] = [];
-  // latest_date: any;
-  //
+
   line_ChartOptions = {
     chartArea: { width: '70%' },
     pointSize: 10,
@@ -134,6 +124,7 @@ export class DataUsComponent implements OnInit {
 
   pie_chartOptions = {
     title: "Current",
+    pieHole: 0.4,
     height: 400
   }
 
@@ -142,30 +133,19 @@ export class DataUsComponent implements OnInit {
     height: 400
   }
 
-
-
   constructor(
-    private http : Http,
     private appComponent: AppComponent
   ) { }
 
-  ngOnInit() {
-    this.getData();
-
-  }
-
-  getData(){
-    this.http.get(this.url).toPromise().then((res)=>{
-    this.dataUs = res.json();
+  ngOnChanges() {
     this.subscribedChartData();
     this.bouncedChartData();
     this.freqChartData();
     this.sentTodayChartData();
     this.sentWeekChartData();
     this.sentMonthChartData();
-    this.dataUsLength = this.dataUs.length;
-    });
   }
+
 
   bouncedChartData() {
     this.bounced_ChartData = this.appComponent.bouncedChartData(this.dataUs);

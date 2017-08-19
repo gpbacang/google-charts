@@ -15,24 +15,101 @@ import * as moment from 'moment';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  // dataUk: Data[] = [];
+  serverUrl: string = "http://localhost:8000/massprojectreport/";
+  applicants: Data[] = [];
+  buildingOwners: Data[] = [];
+  condoOwners: Data[] = [];
+  dataUk: Data[] = [];
+  dataUs: Data[] = [];
+  filingReps: Data[] = [];
+  gmailUs: Data[] = [];
+  gmailWorld: Data[] = [];
 
-  constructor() { }
+  applicantsLength: number;
+  buildingOwnersLength: number;
+  condoOwnersLength: number;
+  dataUkLength: number;
+  dataUsLength: number;
+  filingRepsLength: number;
+  gmailUsLength: number;
+  gmailWorldLength: number;
+
+  constructor(private http : Http) { }
 
   ngOnInit() {
-    // this.getData();
+    this.getApplicants();
+    this.getBuildingOwners();
+    this.getCondoOwners();
+    this.getDataUk();
+    this.getDataUs();
+    this.getFilingReps();
+    this.getGmailUs();
+    this.getGmailWorld();
   }
 
-  // getData(){
-  //
-  //   this.http.get("http://localhost:8000/massprojectreport/2/").toPromise().then((res)=>{
-  //   this.dataUk = res.json();
-  //   });
-  //
-  //   setTimeout(() => {
-  //     console.log(this.dataUk);
-  //   }, 5000);
-  // }
+  getApplicants() {
+    let projectId = "7"
+    this.http.get(this.serverUrl + projectId).toPromise().then((res)=>{
+    this.applicants = res.json();
+    this.applicantsLength = this.applicants.length;
+    });
+  }
+
+  getBuildingOwners() {
+    let projectId = "5"
+    this.http.get(this.serverUrl + projectId).toPromise().then((res)=>{
+    this.buildingOwners = res.json();
+    this.buildingOwnersLength = this.buildingOwners.length;
+    });
+  }
+
+  getCondoOwners() {
+    let projectId = "6"
+    this.http.get(this.serverUrl + projectId).toPromise().then((res)=>{
+    this.condoOwners = res.json();
+    this.condoOwnersLength = this.condoOwners.length;
+    });
+  }
+
+  getDataUs() {
+    let projectId = "1"
+    this.http.get(this.serverUrl + projectId).toPromise().then((res)=>{
+    this.dataUs = res.json();
+    this.dataUsLength = this.dataUs.length;
+    });
+  }
+
+  getDataUk() {
+    let projectId = "2"
+    this.http.get(this.serverUrl + projectId).toPromise().then((res)=>{
+    this.dataUk = res.json();
+    this.dataUkLength = this.dataUk.length;
+    });
+  }
+
+  getFilingReps(){
+    let projectId = "8"
+    this.http.get(this.serverUrl + projectId).toPromise().then((res)=>{
+    this.filingReps = res.json();
+    this.filingRepsLength = this.filingReps.length;
+    });
+  }
+
+  getGmailUs(){
+    let projectId = "3"
+    this.http.get(this.serverUrl + projectId).toPromise().then((res)=>{
+    this.gmailUs = res.json();
+    this.gmailUsLength = this.gmailUs.length;
+    });
+  }
+
+  getGmailWorld() {
+    let projectId = "4"
+    this.http.get(this.serverUrl + projectId).toPromise().then((res)=>{
+    this.gmailWorld = res.json();
+    this.gmailWorldLength = this.gmailWorld.length;
+    });
+  }
 
   bouncedChartData(data: Data[]) {
     let chartData: any[] = [

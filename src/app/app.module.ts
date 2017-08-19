@@ -13,8 +13,10 @@ import { BuildingOwnersComponent } from './building-owners/building-owners.compo
 import { CondoOwnersComponent } from './condo-owners/condo-owners.component';
 import { ApplicantsComponent } from './applicants/applicants.component';
 import { FilingRepsComponent } from './filing-reps/filing-reps.component';
+import { AllProjectsComponent } from './all-projects/all-projects.component';
 
 import { DataService } from './shared/data.service';
+
 
 
 
@@ -29,7 +31,8 @@ import { DataService } from './shared/data.service';
     BuildingOwnersComponent,
     CondoOwnersComponent,
     ApplicantsComponent,
-    FilingRepsComponent
+    FilingRepsComponent,
+    AllProjectsComponent
   ],
   imports: [
     BrowserModule,

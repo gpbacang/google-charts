@@ -1,8 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
-import { Subscription } from 'rxjs/Subscription';
-import { Http, Response } from '@angular/http';
-import 'rxjs/add/operator/toPromise';
+import { Component, Input } from '@angular/core';
 
 import { Data } from '../shared/data';
 import { AppComponent } from '../app.component';
@@ -14,11 +10,8 @@ import * as moment from 'moment';
   templateUrl: './gmail-world.component.html',
   styleUrls: ['./gmail-world.component.scss']
 })
-export class GmailWorldComponent implements OnInit {
-  gmailWorld: Data[] = [];
-  gmailWorldLength: number;
-  projectId: string = "1";
-  url: string = "http://localhost:8000/massprojectreport/4/";
+export class GmailWorldComponent {
+  @Input() gmailWorld: Data[] = [];
   initial_ChartData: any[] = [];
   subscribed_ChartData: any[] = [];
   bounced_ChartData: any[] = [];
@@ -26,7 +19,6 @@ export class GmailWorldComponent implements OnInit {
   sentToday_ChartData: any[] = [];
   sentWeek_ChartData: any[] = [];
   sentMonth_ChartData: any[] = [];
-  latest_date: any;
 
   line_ChartOptions = {
     chartArea: { width: '70%' },
@@ -132,6 +124,7 @@ export class GmailWorldComponent implements OnInit {
 
   pie_chartOptions = {
     title: "Current",
+    pieHole: 0.4,
     height: 400
   }
 
@@ -140,29 +133,17 @@ export class GmailWorldComponent implements OnInit {
     height: 400
   }
 
-
-
   constructor(
-    private http : Http,
     private appComponent: AppComponent
   ) { }
 
-  ngOnInit() {
-    this.getData();
-  }
-
-  getData(){
-
-    this.http.get(this.url).toPromise().then((res)=>{
-    this.gmailWorld = res.json();
+  ngOnChanges() {
     this.subscribedChartData();
     this.bouncedChartData();
     this.freqChartData();
     this.sentTodayChartData();
     this.sentWeekChartData();
     this.sentMonthChartData();
-    this.gmailWorldLength = this.gmailWorld.length;
-    });
   }
 
   bouncedChartData() {
