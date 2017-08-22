@@ -15,7 +15,7 @@ import * as moment from 'moment';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  serverUrl: string = "http://localhost:8000/massprojectreport/";
+  serverUrl: string = "http://bacang.optimalspaces9.com/massprojectreport/";
   applicants: Data[] = [];
   buildingOwners: Data[] = [];
   condoOwners: Data[] = [];

@@ -141,12 +141,15 @@ export class GmailUsComponent {
   ) { }
 
   ngOnChanges() {
-    this.subscribedChartData();
-    this.bouncedChartData();
-    this.freqChartData();
-    this.sentTodayChartData();
-    this.sentWeekChartData();
-    this.sentMonthChartData();
+    if (this.gmailUs.length != 0) {
+      this.subscribedChartData();
+      this.bouncedChartData();
+      this.freqChartData();
+      this.sentTodayChartData();
+      this.sentWeekChartData();
+      this.sentMonthChartData();
+    }
+
   }
 
   bouncedChartData() {

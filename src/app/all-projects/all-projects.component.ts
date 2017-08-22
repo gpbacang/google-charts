@@ -94,14 +94,15 @@ export class AllProjectsComponent {
   constructor() { }
 
   ngOnChanges() {
-    // this.getLatestData(this.applicants);
-    this.getLatestData();
-    this.bouncedChartData();
-    this.freqChartData();
-    this.sentTodayChartData();
-    this.sentWeekChartData();
-    this.sentMonthChartData();
-    this.subscribedChartData();
+    if (this.applicants.length != 0) {
+      this.getLatestData();
+      this.bouncedChartData();
+      this.freqChartData();
+      this.sentTodayChartData();
+      this.sentWeekChartData();
+      this.sentMonthChartData();
+      this.subscribedChartData();
+    }
   }
 
   getLatestData() {

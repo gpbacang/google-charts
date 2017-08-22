@@ -138,14 +138,15 @@ export class DataUsComponent {
   ) { }
 
   ngOnChanges() {
-    this.subscribedChartData();
-    this.bouncedChartData();
-    this.freqChartData();
-    this.sentTodayChartData();
-    this.sentWeekChartData();
-    this.sentMonthChartData();
+    if (this.dataUs.length != 0) {
+        this.subscribedChartData();
+        this.bouncedChartData();
+        this.freqChartData();
+        this.sentTodayChartData();
+        this.sentWeekChartData();
+        this.sentMonthChartData();
+    }
   }
-
 
   bouncedChartData() {
     this.bounced_ChartData = this.appComponent.bouncedChartData(this.dataUs);

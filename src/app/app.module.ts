@@ -15,10 +15,6 @@ import { ApplicantsComponent } from './applicants/applicants.component';
 import { FilingRepsComponent } from './filing-reps/filing-reps.component';
 import { AllProjectsComponent } from './all-projects/all-projects.component';
 
-import { DataService } from './shared/data.service';
-
-
-
 
 @NgModule({
   declarations: [
@@ -39,7 +35,7 @@ import { DataService } from './shared/data.service';
     HttpModule
   ],
   exports: [],
-  providers: [DataService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

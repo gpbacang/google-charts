@@ -137,13 +137,15 @@ export class ApplicantsComponent {
     private appComponent: AppComponent
   ) { }
 
-  ngOnChanges(changes: any) {
+  ngOnChanges() {
+    if (this.applicants.length != 0) {
       this.subscribedChartData();
       this.bouncedChartData();
       this.freqChartData();
       this.sentTodayChartData();
       this.sentWeekChartData();
       this.sentMonthChartData();
+    }
   }
 
   bouncedChartData() {

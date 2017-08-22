@@ -138,12 +138,15 @@ export class GmailWorldComponent {
   ) { }
 
   ngOnChanges() {
-    this.subscribedChartData();
-    this.bouncedChartData();
-    this.freqChartData();
-    this.sentTodayChartData();
-    this.sentWeekChartData();
-    this.sentMonthChartData();
+    if (this.gmailWorld.length != 0) {
+      this.subscribedChartData();
+      this.bouncedChartData();
+      this.freqChartData();
+      this.sentTodayChartData();
+      this.sentWeekChartData();
+      this.sentMonthChartData();
+    }
+
   }
 
   bouncedChartData() {

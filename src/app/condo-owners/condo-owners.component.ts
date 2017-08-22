@@ -139,12 +139,15 @@ export class CondoOwnersComponent {
 
 
   ngOnChanges(changes: any) {
-    this.subscribedChartData();
-    this.bouncedChartData();
-    this.freqChartData();
-    this.sentTodayChartData();
-    this.sentWeekChartData();
-    this.sentMonthChartData();
+    if (this.condoOwners.length != 0) {
+      this.subscribedChartData();
+      this.bouncedChartData();
+      this.freqChartData();
+      this.sentTodayChartData();
+      this.sentWeekChartData();
+      this.sentMonthChartData();
+    }
+
   }
 
 
